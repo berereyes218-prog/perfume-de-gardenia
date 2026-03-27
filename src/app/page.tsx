@@ -24,17 +24,15 @@ import { MapPin, Clock, User, ChevronLeft, ChevronRight, Star, MessageCircle, Se
 // LINKS DE PAGO DE MERCADO PAGO POR CANTIDAD
 // Reemplaza estas URLs con los links reales
 // ============================================
-const linksDePago: Record<number, string> = {
-  1: "https://www.mercadopago.com.mx/checkout/v1/payment/1-boleto", // Link para 1 boleto
-  2: "https://www.mercadopago.com.mx/checkout/v1/payment/2-boletos", // Link para 2 boletos
-  3: "https://www.mercadopago.com.mx/checkout/v1/payment/3-boletos", // Link para 3 boletos
-  4: "https://www.mercadopago.com.mx/checkout/v1/payment/4-boletos", // Link para 4 boletos
-  5: "https://www.mercadopago.com.mx/checkout/v1/payment/5-boletos", // Link para 5 boletos
-  6: "https://www.mercadopago.com.mx/checkout/v1/payment/6-boletos", // Link para 6 boletos
-  7: "https://www.mercadopago.com.mx/checkout/v1/payment/7-boletos", // Link para 7 boletos
-  8: "https://www.mercadopago.com.mx/checkout/v1/payment/8-boletos", // Link para 8 boletos
-  9: "https://www.mercadopago.com.mx/checkout/v1/payment/9-boletos", // Link para 9 boletos
-  10: "https://www.mercadopago.com.mx/checkout/v1/payment/10-boletos", // Link para 10 boletos
+const linksDePago = {
+  mezzanine: {
+    marzo: "https://www.paypal.com/ncp/payment/JQMPLNG2MF8R4",
+    abril: "https://www.paypal.com/ncp/payment/HTUHQTMHP9QH2",
+  },
+  luneta: {
+    marzo: "https://www.paypal.com/ncp/payment/65TM34P98F67W",
+    abril: "https://www.paypal.com/ncp/payment/4G2LC9JJMXBCG",
+  },
 };
 
 // Data
@@ -156,14 +154,33 @@ export default function Home() {
 
     setIsSubmitting(true);
 
-    // Obtener el link de pago según la cantidad
-    const linkPago = linksDePago[cantidad];
+    const funcion = funciones[funcionSeleccionada];
+const fecha = funcion.fecha.toLowerCase();
 
-    if (!linkPago) {
-      alert("Link de pago no configurado para esta cantidad. Por favor, contacta al administrador.");
-      setIsSubmitting(false);
-      return;
-    }
+let linkPago = "";
+
+if (tipoAsiento === "mezzanine") {
+  if (fecha.includes("marzo")) {
+    linkPago = linksDePago.mezzanine.marzo;
+  } else if (fecha.includes("abril")) {
+    linkPago = linksDePago.mezzanine.abril;
+  }
+}
+
+if (tipoAsiento === "luneta") {
+  if (fecha.includes("marzo")) {
+    linkPago = linksDePago.luneta.marzo;
+  } else if (fecha.includes("abril")) {
+    linkPago = linksDePago.luneta.abril;
+  }
+}
+
+// Validación
+if (!linkPago) {
+  alert("Esta combinación aún no está disponible.");
+  setIsSubmitting(false);
+  return;
+}
 
     // Guardar datos del cliente (aquí podrías enviarlos a un servidor)
     console.log("Datos del cliente:", { nombre, email, cantidad, tipoAsiento, funcion: funciones[funcionSeleccionada] });
