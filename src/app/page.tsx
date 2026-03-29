@@ -26,12 +26,12 @@ import { MapPin, Clock, User, ChevronLeft, ChevronRight, Star, MessageCircle, Se
 // ============================================
 const linksDePago = {
   mezzanine: {
-    marzo: "https://www.paypal.com/ncp/payment/JQMPLNG2MF8R4",
-    abril: "https://www.paypal.com/ncp/payment/HTUHQTMHP9QH2",
+    marzo: "https://mpago.la/1iwztBe",
+    abril: "https://mpago.la/1iwztBe",
   },
   luneta: {
-    marzo: "https://www.paypal.com/ncp/payment/65TM34P98F67W",
-    abril: "https://www.paypal.com/ncp/payment/4G2LC9JJMXBCG",
+    marzo: "https://mpago.la/1jdRno4",
+    abril: "https://mpago.la/1jdRno4",
   },
 };
 
