@@ -26,8 +26,8 @@ import { MapPin, Clock, User, ChevronLeft, ChevronRight, Star, MessageCircle, Se
 // ============================================
 const linksDePago = {
   mezzanine: {
-    marzo: "https://mpago.la/1iwztBe",
-    abril: "https://mpago.la/1iwztBe",
+    marzo: "https://mpago.la/1rxUnhV",
+    abril: "https://mpago.la/1rxUnhV",
   },
   luneta: {
     marzo: "https://mpago.la/1jdRno4",
